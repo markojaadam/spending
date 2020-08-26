@@ -15,8 +15,8 @@ OPTIONS:
 	-d/--database=your_database_name: target PostgreSQL database (default: spending)
 	-h/--host=database host (default: localhost)
 	-t/--target=api/all: choose between rebuild/deploy everything or only api schema and functions
-	-u/--username: username for the database (default: meh)
-	-p/--password: password for the database (default: meh)"
+	-u/--username: username for the database (default: test)
+	-p/--password: password for the database (default: test)"
 
 for arg in "$@"
 do
