@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from debug_core import *
+import click
+import texttable as ttbl
 
 DEBUB_OPTIONS = click.Choice(['silent', 'all', 'submit', 'payload', 'errors'])
 

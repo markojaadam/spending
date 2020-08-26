@@ -4,20 +4,9 @@ import requests
 import json
 import click
 import time
-import texttable as ttbl
 
 API_URL = 'http://localhost:8000/'
 route_url = lambda x: API_URL + x
-
-class Bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
 
 def pretty_date(ts):
     second_diff = time.time() - ts
@@ -48,7 +37,7 @@ def pretty_date(ts):
         return str(int(day_diff / 30)) + " months ago"
     return str(int(day_diff / 365)) + " years ago"
 
-def debug_output(request_params, result, debug):
+def debug_output(request_params: dict, result: str, debug: str):
     '''
     outputs session data on the requested debug level: (silent/)all/error/payload
     '''
@@ -61,7 +50,7 @@ def debug_output(request_params, result, debug):
         click.echo(result)
 
 
-def add_spending_command(amount, currency, reason, date, debug):
+def add_spending_command(amount: int, currency: str, reason: str, date: int, debug: str) -> dict:
     request_params = {
         'amount': amount,
         'currency': currency,
@@ -74,7 +63,7 @@ def add_spending_command(amount, currency, reason, date, debug):
     return (json.loads(data))
 
 
-def update_spending_command(id, amount, currency, reason, date, debug):
+def update_spending_command(id: int, amount: int, currency: str, reason: str, date: int, debug: str) -> dict:
     request_params = {
         'id': id,
         'amount': amount,
@@ -88,7 +77,7 @@ def update_spending_command(id, amount, currency, reason, date, debug):
     return (json.loads(data))
 
 
-def delete_spending_command(id, debug):
+def delete_spending_command(id, debug) -> dict:
     request_params = {
         'id': id,
     }
@@ -98,7 +87,7 @@ def delete_spending_command(id, debug):
     return (json.loads(data))
 
 
-def get_spending_command(order_by, currency, debug):
+def get_spending_command(order_by: str, currency: str, debug) -> dict:
     params = dict()
     if order_by:
         params['order_by'] = order_by
@@ -110,6 +99,9 @@ def get_spending_command(order_by, currency, debug):
     return (json.loads(data))
 
 class Errors(object):
+    '''
+    Mirror of server util code
+    '''
     def __init__(self):
         self.MALFORMED = 1
         self.DATA_ERROR = 2
