@@ -4,7 +4,7 @@ import re
 sqlstate_finder = re.compile('^(R.{4})\n')
 
 
-def get_currency_id(currency_code):
+def get_currency_id(currency_code: str) -> int:
     return conf.settings.CURRENCY_MAP.get(currency_code.lower())
 
 
@@ -19,6 +19,6 @@ class Errors(object):
             "R0003": "Invalid currency code.",
         }
 
-    def from_db(self, errmsg):
+    def from_db(self, errmsg: str) -> str:
         match = sqlstate_finder.findall(errmsg)
         return self.sqlstates.get(match[0], 'Unknown error.') if match else 'Unknown error.'
