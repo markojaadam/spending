@@ -12,11 +12,6 @@ update_validator = JSONSchemaValidator(UPDATE_SPENDING_SCHEMA)
 delete_validator = JSONSchemaValidator(DELETE_SPENDING_SCHEMA)
 error = Errors()
 
-
-def index(request):
-    return HttpResponse(str(get_currency_id('USD')))
-
-
 def addspending(request):
     '''
     Add a spending, submit data JSON template:
