@@ -1,0 +1,718 @@
+{
+  "1": [
+    "Afghani",
+    "AFN"
+  ],
+  "2": [
+    "Euro",
+    "EUR"
+  ],
+  "3": [
+    "Lek",
+    "ALL"
+  ],
+  "4": [
+    "Algerian Dinar",
+    "DZD"
+  ],
+  "5": [
+    "US Dollar",
+    "USD"
+  ],
+  "6": [
+    "Kwanza",
+    "AOA"
+  ],
+  "7": [
+    "East Caribbean Dollar",
+    "XCD"
+  ],
+  "8": [
+    "Argentine Peso",
+    "ARS"
+  ],
+  "9": [
+    "Armenian Dram",
+    "AMD"
+  ],
+  "10": [
+    "Aruban Florin",
+    "AWG"
+  ],
+  "11": [
+    "Australian Dollar",
+    "AUD"
+  ],
+  "12": [
+    "Azerbaijan Manat",
+    "AZN"
+  ],
+  "13": [
+    "Bahamian Dollar",
+    "BSD"
+  ],
+  "14": [
+    "Bahraini Dinar",
+    "BHD"
+  ],
+  "15": [
+    "Taka",
+    "BDT"
+  ],
+  "16": [
+    "Barbados Dollar",
+    "BBD"
+  ],
+  "17": [
+    "Belarusian Ruble",
+    "BYN"
+  ],
+  "18": [
+    "Belize Dollar",
+    "BZD"
+  ],
+  "19": [
+    "CFA Franc BCEAO",
+    "XOF"
+  ],
+  "20": [
+    "Bermudian Dollar",
+    "BMD"
+  ],
+  "21": [
+    "Indian Rupee",
+    "INR"
+  ],
+  "22": [
+    "Ngultrum",
+    "BTN"
+  ],
+  "23": [
+    "Boliviano",
+    "BOB"
+  ],
+  "24": [
+    "Mvdol",
+    "BOV"
+  ],
+  "25": [
+    "Convertible Mark",
+    "BAM"
+  ],
+  "26": [
+    "Pula",
+    "BWP"
+  ],
+  "27": [
+    "Norwegian Krone",
+    "NOK"
+  ],
+  "28": [
+    "Brazilian Real",
+    "BRL"
+  ],
+  "29": [
+    "Brunei Dollar",
+    "BND"
+  ],
+  "30": [
+    "Bulgarian Lev",
+    "BGN"
+  ],
+  "31": [
+    "Burundi Franc",
+    "BIF"
+  ],
+  "32": [
+    "Cabo Verde Escudo",
+    "CVE"
+  ],
+  "33": [
+    "Riel",
+    "KHR"
+  ],
+  "34": [
+    "CFA Franc BEAC",
+    "XAF"
+  ],
+  "35": [
+    "Canadian Dollar",
+    "CAD"
+  ],
+  "36": [
+    "Cayman Islands Dollar",
+    "KYD"
+  ],
+  "37": [
+    "Chilean Peso",
+    "CLP"
+  ],
+  "38": [
+    "Unidad de Fomento",
+    "CLF"
+  ],
+  "39": [
+    "Yuan Renminbi",
+    "CNY"
+  ],
+  "40": [
+    "Colombian Peso",
+    "COP"
+  ],
+  "41": [
+    "Unidad de Valor Real",
+    "COU"
+  ],
+  "42": [
+    "Comorian Franc",
+    "KMF"
+  ],
+  "43": [
+    "Congolese Franc",
+    "CDF"
+  ],
+  "44": [
+    "New Zealand Dollar",
+    "NZD"
+  ],
+  "45": [
+    "Costa Rican Colon",
+    "CRC"
+  ],
+  "46": [
+    "Kuna",
+    "HRK"
+  ],
+  "47": [
+    "Cuban Peso",
+    "CUP"
+  ],
+  "48": [
+    "Peso Convertible",
+    "CUC"
+  ],
+  "49": [
+    "Netherlands Antillean Guilder",
+    "ANG"
+  ],
+  "50": [
+    "Czech Koruna",
+    "CZK"
+  ],
+  "51": [
+    "Danish Krone",
+    "DKK"
+  ],
+  "52": [
+    "Djibouti Franc",
+    "DJF"
+  ],
+  "53": [
+    "Dominican Peso",
+    "DOP"
+  ],
+  "54": [
+    "Egyptian Pound",
+    "EGP"
+  ],
+  "55": [
+    "El Salvador Colon",
+    "SVC"
+  ],
+  "56": [
+    "Nakfa",
+    "ERN"
+  ],
+  "57": [
+    "Ethiopian Birr",
+    "ETB"
+  ],
+  "58": [
+    "Falkland Islands Pound",
+    "FKP"
+  ],
+  "59": [
+    "Fiji Dollar",
+    "FJD"
+  ],
+  "60": [
+    "CFP Franc",
+    "XPF"
+  ],
+  "61": [
+    "Dalasi",
+    "GMD"
+  ],
+  "62": [
+    "Lari",
+    "GEL"
+  ],
+  "63": [
+    "Ghana Cedi",
+    "GHS"
+  ],
+  "64": [
+    "Gibraltar Pound",
+    "GIP"
+  ],
+  "65": [
+    "Quetzal",
+    "GTQ"
+  ],
+  "66": [
+    "Pound Sterling",
+    "GBP"
+  ],
+  "67": [
+    "Guinean Franc",
+    "GNF"
+  ],
+  "68": [
+    "Guyana Dollar",
+    "GYD"
+  ],
+  "69": [
+    "Gourde",
+    "HTG"
+  ],
+  "70": [
+    "Lempira",
+    "HNL"
+  ],
+  "71": [
+    "Hong Kong Dollar",
+    "HKD"
+  ],
+  "72": [
+    "Forint",
+    "HUF"
+  ],
+  "73": [
+    "Iceland Krona",
+    "ISK"
+  ],
+  "74": [
+    "Rupiah",
+    "IDR"
+  ],
+  "75": [
+    "SDR (Special Drawing Right)",
+    "XDR"
+  ],
+  "76": [
+    "Iranian Rial",
+    "IRR"
+  ],
+  "77": [
+    "Iraqi Dinar",
+    "IQD"
+  ],
+  "78": [
+    "New Israeli Sheqel",
+    "ILS"
+  ],
+  "79": [
+    "Jamaican Dollar",
+    "JMD"
+  ],
+  "80": [
+    "Yen",
+    "JPY"
+  ],
+  "81": [
+    "Jordanian Dinar",
+    "JOD"
+  ],
+  "82": [
+    "Tenge",
+    "KZT"
+  ],
+  "83": [
+    "Kenyan Shilling",
+    "KES"
+  ],
+  "84": [
+    "North Korean Won",
+    "KPW"
+  ],
+  "85": [
+    "Won",
+    "KRW"
+  ],
+  "86": [
+    "Kuwaiti Dinar",
+    "KWD"
+  ],
+  "87": [
+    "Som",
+    "KGS"
+  ],
+  "88": [
+    "Lao Kip",
+    "LAK"
+  ],
+  "89": [
+    "Lebanese Pound",
+    "LBP"
+  ],
+  "90": [
+    "Loti",
+    "LSL"
+  ],
+  "91": [
+    "Rand",
+    "ZAR"
+  ],
+  "92": [
+    "Liberian Dollar",
+    "LRD"
+  ],
+  "93": [
+    "Libyan Dinar",
+    "LYD"
+  ],
+  "94": [
+    "Swiss Franc",
+    "CHF"
+  ],
+  "95": [
+    "Pataca",
+    "MOP"
+  ],
+  "96": [
+    "Denar",
+    "MKD"
+  ],
+  "97": [
+    "Malagasy Ariary",
+    "MGA"
+  ],
+  "98": [
+    "Malawi Kwacha",
+    "MWK"
+  ],
+  "99": [
+    "Malaysian Ringgit",
+    "MYR"
+  ],
+  "100": [
+    "Rufiyaa",
+    "MVR"
+  ],
+  "101": [
+    "Ouguiya",
+    "MRO"
+  ],
+  "102": [
+    "Mauritius Rupee",
+    "MUR"
+  ],
+  "103": [
+    "ADB Unit of Account",
+    "XUA"
+  ],
+  "104": [
+    "Mexican Peso",
+    "MXN"
+  ],
+  "105": [
+    "Mexican Unidad de Inversion (UDI)",
+    "MXV"
+  ],
+  "106": [
+    "Moldovan Leu",
+    "MDL"
+  ],
+  "107": [
+    "Tugrik",
+    "MNT"
+  ],
+  "108": [
+    "Moroccan Dirham",
+    "MAD"
+  ],
+  "109": [
+    "Mozambique Metical",
+    "MZN"
+  ],
+  "110": [
+    "Kyat",
+    "MMK"
+  ],
+  "111": [
+    "Namibia Dollar",
+    "NAD"
+  ],
+  "112": [
+    "Nepalese Rupee",
+    "NPR"
+  ],
+  "113": [
+    "Cordoba Oro",
+    "NIO"
+  ],
+  "114": [
+    "Naira",
+    "NGN"
+  ],
+  "115": [
+    "Rial Omani",
+    "OMR"
+  ],
+  "116": [
+    "Pakistan Rupee",
+    "PKR"
+  ],
+  "117": [
+    "Balboa",
+    "PAB"
+  ],
+  "118": [
+    "Kina",
+    "PGK"
+  ],
+  "119": [
+    "Guarani",
+    "PYG"
+  ],
+  "120": [
+    "Sol",
+    "PEN"
+  ],
+  "121": [
+    "Philippine Piso",
+    "PHP"
+  ],
+  "122": [
+    "Zloty",
+    "PLN"
+  ],
+  "123": [
+    "Qatari Rial",
+    "QAR"
+  ],
+  "124": [
+    "Romanian Leu",
+    "RON"
+  ],
+  "125": [
+    "Russian Ruble",
+    "RUB"
+  ],
+  "126": [
+    "Rwanda Franc",
+    "RWF"
+  ],
+  "127": [
+    "Saint Helena Pound",
+    "SHP"
+  ],
+  "128": [
+    "Tala",
+    "WST"
+  ],
+  "129": [
+    "Dobra",
+    "STD"
+  ],
+  "130": [
+    "Saudi Riyal",
+    "SAR"
+  ],
+  "131": [
+    "Serbian Dinar",
+    "RSD"
+  ],
+  "132": [
+    "Seychelles Rupee",
+    "SCR"
+  ],
+  "133": [
+    "Leone",
+    "SLL"
+  ],
+  "134": [
+    "Singapore Dollar",
+    "SGD"
+  ],
+  "135": [
+    "Sucre",
+    "XSU"
+  ],
+  "136": [
+    "Solomon Islands Dollar",
+    "SBD"
+  ],
+  "137": [
+    "Somali Shilling",
+    "SOS"
+  ],
+  "138": [
+    "South Sudanese Pound",
+    "SSP"
+  ],
+  "139": [
+    "Sri Lanka Rupee",
+    "LKR"
+  ],
+  "140": [
+    "Sudanese Pound",
+    "SDG"
+  ],
+  "141": [
+    "Surinam Dollar",
+    "SRD"
+  ],
+  "142": [
+    "Lilangeni",
+    "SZL"
+  ],
+  "143": [
+    "Swedish Krona",
+    "SEK"
+  ],
+  "144": [
+    "WIR Euro",
+    "CHE"
+  ],
+  "145": [
+    "WIR Franc",
+    "CHW"
+  ],
+  "146": [
+    "Syrian Pound",
+    "SYP"
+  ],
+  "147": [
+    "New Taiwan Dollar",
+    "TWD"
+  ],
+  "148": [
+    "Somoni",
+    "TJS"
+  ],
+  "149": [
+    "Tanzanian Shilling",
+    "TZS"
+  ],
+  "150": [
+    "Baht",
+    "THB"
+  ],
+  "151": [
+    "Pa\u2019anga",
+    "TOP"
+  ],
+  "152": [
+    "Trinidad and Tobago Dollar",
+    "TTD"
+  ],
+  "153": [
+    "Tunisian Dinar",
+    "TND"
+  ],
+  "154": [
+    "Turkish Lira",
+    "TRY"
+  ],
+  "155": [
+    "Turkmenistan New Manat",
+    "TMT"
+  ],
+  "156": [
+    "Uganda Shilling",
+    "UGX"
+  ],
+  "157": [
+    "Hryvnia",
+    "UAH"
+  ],
+  "158": [
+    "UAE Dirham",
+    "AED"
+  ],
+  "159": [
+    "US Dollar (Next day)",
+    "USN"
+  ],
+  "160": [
+    "Peso Uruguayo",
+    "UYU"
+  ],
+  "161": [
+    "Uruguay Peso en Unidades Indexadas (URUIURUI)",
+    "UYI"
+  ],
+  "162": [
+    "Uzbekistan Sum",
+    "UZS"
+  ],
+  "163": [
+    "Vatu",
+    "VUV"
+  ],
+  "164": [
+    "Bol\u00edvar",
+    "VEF"
+  ],
+  "165": [
+    "Dong",
+    "VND"
+  ],
+  "166": [
+    "Yemeni Rial",
+    "YER"
+  ],
+  "167": [
+    "Zambian Kwacha",
+    "ZMW"
+  ],
+  "168": [
+    "Zimbabwe Dollar",
+    "ZWL"
+  ],
+  "169": [
+    "Bond Markets Unit European Composite Unit (EURCO)",
+    "XBA"
+  ],
+  "170": [
+    "Bond Markets Unit European Monetary Unit (E.M.U.-6)",
+    "XBB"
+  ],
+  "171": [
+    "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)",
+    "XBC"
+  ],
+  "172": [
+    "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)",
+    "XBD"
+  ],
+  "173": [
+    "Codes specifically reserved for testing purposes",
+    "XTS"
+  ],
+  "174": [
+    "The codes assigned for transactions where no currency is involved",
+    "XXX"
+  ],
+  "175": [
+    "Gold",
+    "XAU"
+  ],
+  "176": [
+    "Palladium",
+    "XPD"
+  ],
+  "177": [
+    "Platinum",
+    "XPT"
+  ],
+  "178": [
+    "Silver",
+    "XAG"
+  ],
+  "names": [
+    "currency",
+    "code"
+  ]
+}

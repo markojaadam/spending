@@ -1,0 +1,3 @@
+-- -*- SQL -*-
+
+DROP SCHEMA IF EXISTS api CASCADE;
