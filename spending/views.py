@@ -114,8 +114,7 @@ def updatespending(request):
             data = [jsondata.get(param) for param in params]
             with connection.cursor() as cursor:
                 try:
-                    cursor.callproc('api.fun_update_spending',
-                                    data)  # The order should be fine thanks to the schema validation
+                    cursor.callproc('api.fun_update_spending', data)
                 except Exception as e:
                     return HttpResponse(json.dumps({'error': error.DB_ERROR, 'msg': error.from_db(
                         str(e))}))  # Happens on invalid ID, let the transaction handle it.

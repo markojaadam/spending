@@ -95,7 +95,6 @@ $fun$
 BEGIN
   IF ((SELECT pkey_id FROM tbl.currency WHERE pkey_id = a_currency_id) ISNULL) THEN
     RAISE SQLSTATE 'R0003'; -- Invalid currency code
-  ELSE
   END IF;
   RETURN QUERY SELECT sp.pkey_id,
                       sp.amount,
