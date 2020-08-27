@@ -17,3 +17,9 @@
 .fuse_hidden*
 
  
+
+venv/
+
+Pipfile
+
+Pipfile.lock
