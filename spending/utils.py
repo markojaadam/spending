@@ -1,5 +1,6 @@
 import django.conf as conf
 import re
+import json
 
 sqlstate_finder = re.compile('^(R.{4})\n')
 
@@ -22,3 +23,9 @@ class Errors(object):
     def from_db(self, errmsg: str) -> str:
         match = sqlstate_finder.findall(errmsg)
         return self.sqlstates.get(match[0], 'Unknown error.') if match else 'Unknown error.'
+
+class AppConfig(object):
+    def __init__(self, config_file):
+        config =  json.loads(open(config_file).read())
+        self.server = config.get('server')
+        self.db = config.get('db')

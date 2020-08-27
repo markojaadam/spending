@@ -1,4 +1,5 @@
 import os
+from .utils import AppConfig
 
 """
 Django settings for spending project.
@@ -17,17 +18,20 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
+e = os.path.abspath(os.path.join(__file__, "../../.secrets"))
+config_file = os.path.join(e, "config.json")
+app_config = AppConfig(config_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '14815pdr8i4sv8-%ekaa8m0dvz6dajcy#62dh90*rrei)ktcu4'
+SECRET_KEY = app_config.server.get('secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -80,11 +84,11 @@ WSGI_APPLICATION = 'spending.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spending',
-        'USER': 'test',
-        'PASSWORD': 'test',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'NAME': app_config.db.get('dbname'),
+        'USER': app_config.db.get('username'),
+        'PASSWORD': app_config.db.get('password'),
+        'HOST': app_config.db.get('host'),
+        'PORT': app_config.db.get('port'),
         'OPTIONS': {
             'options': '-c search_path=tbl'
         }
