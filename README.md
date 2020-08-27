@@ -39,6 +39,7 @@ This will create all the stuff in the newly created database.
 Every time you want to redeploy the entire database objects, run:
 
 ```bash
+cd db
 deploy_database.sh --target=all --rebuild
 ```
 And than repeat the deploy procedure.
@@ -46,6 +47,7 @@ And than repeat the deploy procedure.
 If you only want to recreate the API schema (containing only the database function) run
 
 ```bash
+cd db
 deploy_database.sh --target=api --rebuild
 ```
 
@@ -60,6 +62,26 @@ source $HOME/venv/bin/activate
 ```bash
 python3 -m pip install -r requirements.txt
 ```
+- add secrets
+create `.secret` folder and place a `config.json` file in it with the following content:
+
+```json
+{
+  "server": {
+    "secret_key": "django_top_secret"
+  },
+  "db": {
+    "dbname": "spending",
+    "username": "test",
+    "password": "test",
+    "host": "localhost",
+    "port": 5432
+  }
+}
+
+
+```	
+
 ## Debug mode
 run `python3 manage.py runserver`
 
@@ -67,7 +89,7 @@ run `python3 manage.py runserver`
 - copy init.d script into /etc/init.d/
 ```bash
 sudo cp initd_script.sh /etc/init.d/gunicorn-spending
-sudo chmod +x etc/init.d/gunicorn-spending
+sudo chmod +x /etc/init.d/gunicorn-spending
 ```
 **note**: set the parameters above in the script according to the local setup:
 ```
@@ -103,6 +125,7 @@ Optional query parameters:
 curl -l {API_URL}/getspending?currency=HUF&order_by=amount
 ```
 -> outputs:
+
 list of spendings
 ```json
 {"ok": 1, "data": [{"id": 21, "amount": 1, "reason": null, "date": 1598236973}]}
@@ -115,7 +138,9 @@ Add a new spending to the database with POST:
 curl -l -X POST {API_URL}/addspending --data '{"amount": 1, "currency": "USD", "reason": "shopping lollipop", "date": 1598538717}'
 ```
 **note**: all object properties are required
+
 -> outputs:
+
 the ID of the new entry on successful creation:
 ```json
 {"ok": 1, "params": {"id": 432}}
@@ -127,6 +152,7 @@ Deletes the sending from the database referenced by its ID:
 curl -l -X POST {API_URL}/deletespending --data '{"id":432}'
 ```
 -> outputs ack.
+
 ```json
 {"ok": 1}
 ```
@@ -137,7 +163,9 @@ Updates a spending referenced by its ID:
 curl -l -X POST {API_URL}/updatespending --data '{"amount": 1, "currency": "USD", "id": 432, "reason": "shopping candy", "date": 1598538717}'
 ```
 **note**: all object properties are required
+
 -> outputs ack.
+
 ```json
 {"ok": 1}
 ```
@@ -146,6 +174,15 @@ curl -l -X POST {API_URL}/updatespending --data '{"amount": 1, "currency": "USD"
 
 the following test tools can be found in [tool](https://github.com/markojaadam/spending/tree/master/tool) folder:
 
+## debug_core.py
+
+Holds the main functions for the debugger modules.
+
+**note:** Don't forget to replace the API_URL paramter according to the server setup:
+
+```py
+API_URL = 'http://localhost:8000/
+```
  
 ## debug_pentest.py
  
