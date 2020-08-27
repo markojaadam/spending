@@ -3,6 +3,12 @@
 
 -- sequences
 -- Sequence: seq_spending_id
+CREATE SEQUENCE tbl.seq_currency_id
+      NO MINVALUE
+      NO MAXVALUE
+      NO CYCLE
+;
+
 CREATE SEQUENCE tbl.seq_spending_id
       NO MINVALUE
       NO MAXVALUE
@@ -12,7 +18,7 @@ CREATE SEQUENCE tbl.seq_spending_id
 -- tables
 -- Table: currency
 CREATE TABLE tbl.currency (
-    pkey_id smallint  NOT NULL DEFAULT =nextval('tbl.seq_currency_id'),
+    pkey_id smallint  NOT NULL DEFAULT nextval('tbl.seq_currency_id'),
     currency varchar(256)  NOT NULL,
     code varchar(3)  NOT NULL,
     CONSTRAINT currency_pk PRIMARY KEY (pkey_id)
