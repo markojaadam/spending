@@ -31,7 +31,7 @@ def get_spending(order_by, currency, debug):
 
 
 @click.command()
-@click.option('--amount', type=int)
+@click.option('--amount', type=float)
 @click.option('--currency')
 @click.option('--reason')
 @click.option('--date', type=int, default=int(time.time()) - 3600, show_default=True)
@@ -49,7 +49,7 @@ def delete_spending(id, debug):
 
 @click.command()
 @click.option('--id', type=int)
-@click.option('--amount', type=int)
+@click.option('--amount', type=float)
 @click.option('--currency')
 @click.option('--reason')
 @click.option('--date', type=int)

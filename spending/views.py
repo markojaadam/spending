@@ -31,6 +31,7 @@ def addspending(request) -> HttpResponse:
             elif jsondata['date'] > int(time.time()):
                 return HttpResponse(json.dumps(
                     {'error': error.DATA_ERROR, 'msg': 'Invalid timestamp!'}))  # You cannot spend in the future
+            jsondata['amount'] = int(jsondata['amount']*100)
             params = ['amount', 'currency', 'reason', 'date']
             data = [jsondata.get(param) for param in params]
             with connection.cursor() as cursor:
@@ -87,7 +88,7 @@ def getspending(request) -> HttpResponse:
             ]
         else:
             data_dict = [
-                {'id': sp_id, 'amount': amount, 'currency': currency, 'reason': reason, 'date': date} for
+                {'id': sp_id, 'amount': float(amount)/100, 'currency': currency, 'reason': reason, 'date': date} for
                 sp_id, amount, currency, reason, date in data
             ]
         return HttpResponse(json.dumps({'ok': 1, 'data': data_dict}))
@@ -138,6 +139,7 @@ def updatespending(request) -> HttpResponse:
             elif jsondata['date'] > int(time.time()):
                 return HttpResponse(json.dumps(
                     {'error': error.DATA_ERROR, 'msg': 'Invalid timestamp!'}))  # You cannot spend in the future
+            jsondata['amount'] = int(jsondata['amount']*100)
             params = ['id', 'amount', 'currency', 'reason', 'date']
             data = [jsondata.get(param) for param in params]
             with connection.cursor() as cursor:

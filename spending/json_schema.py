@@ -3,8 +3,9 @@ ADD_SPENDING_SCHEMA = {
     'type': 'object',
     'properties': {
         'amount': {
-            'type': 'integer',
-            'minimum': 1
+            'type': 'number',
+            'minimum': 0.01,
+            "multipleOf": 0.01
         },
         'currency': {
             'type': 'string',
@@ -38,8 +39,9 @@ UPDATE_SPENDING_SCHEMA = {
             'minimum': 1
         },
         'amount': {
-            'type': 'integer',
-            'minimum': 1
+            'type': 'number',
+            'minimum': 0.01,
+            "multipleOf": 0.01
         },
         'currency': {
             'type': 'string',
