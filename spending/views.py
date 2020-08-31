@@ -57,7 +57,7 @@ def get_spending_list():
         cursor.callproc('api.fun_get_all_spendings')
         data = cursor.fetchall()
     data_dict = [
-        {'id': sp_id, 'amount': format_amount(float(amount) / 100), 'currency': currency, 'reason': reason, 'date': pretty_date(date)} for
+        {'id': sp_id, 'amount': format_amount(float(amount) / 100), 'currency': currency, 'reason': reason if reason else '', 'date': pretty_date(date)} for
         sp_id, amount, currency, reason, date in data
     ]
     return(data_dict)
