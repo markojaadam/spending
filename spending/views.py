@@ -6,16 +6,16 @@ from .utils import get_currency_id, Errors, pretty_date, format_amount
 from .json_schema import ValidationSchema
 from .validators import JSONSchemaValidator
 import json
-import time
+import logging
 
 error = Errors()
 validation_schema = ValidationSchema()
+logger = logging.getLogger("app-log")
 
 
 def index(request) -> HttpResponse:
     if request.method == 'GET':
         spend_data = get_spending_list()
-        print(type(spend_data))
         index_template = render_to_string('list.html', {'data': spend_data})
         return HttpResponse(index_template)
     else:
@@ -47,6 +47,7 @@ def addspending(request) -> HttpResponse:
                     cursor.callproc('api.fun_add_spending', data)
                     _id = cursor.fetchall()
                 except Exception as e:
+                    logger.debug("[DATABSE ERROR] %s" % e)
                     return HttpResponse(json.dumps({'error': error.DB_ERROR, 'msg': error.from_db(
                         str(e))}))  # Shouldn't happen
             return HttpResponse(json.dumps({'ok': 1, 'params': {'id': _id[0][0]}}))
@@ -132,6 +133,7 @@ def deletespending(request) -> HttpResponse:
                     cursor.callproc('api.fun_delete_spending',
                                     list(jsondata.values()))
                 except Exception as e:
+                    logger.debug("[DATABSE ERROR] %s" % e)
                     return HttpResponse(json.dumps({'error': error.DB_ERROR, 'msg': error.from_db(
                         str(e))}))  # Happens on invalid ID, let the transaction handle it.
             return HttpResponse(json.dumps({'ok': 1}))
@@ -165,6 +167,7 @@ def updatespending(request) -> HttpResponse:
                 try:
                     cursor.callproc('api.fun_update_spending', data)
                 except Exception as e:
+                    logger.debug("[DATABSE ERROR] %s" % e)
                     return HttpResponse(json.dumps({'error': error.DB_ERROR, 'msg': error.from_db(
                         str(e))}))  # Happens on invalid ID, let the transaction handle it.
             return HttpResponse(json.dumps({'ok': 1}))

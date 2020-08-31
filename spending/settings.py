@@ -130,3 +130,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CURRENCY_MAP = dict()
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'app-log': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG' if DEBUG else 'INFO'),
+                'propagate': False,
+        },
+    },
+}
