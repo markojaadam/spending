@@ -3,20 +3,20 @@ CREATE SCHEMA IF NOT EXISTS api;
 CREATE TYPE api.enum_spending_cols AS ENUM ('date', 'amount', 'currency');
 
 --
-CREATE OR REPLACE FUNCTION api.fun_add_spending(a_amount bigint, a_currency int, a_reason varchar, a_date bigint,
+CREATE OR REPLACE FUNCTION api.fun_add_spending(a_amount bigint, a_currency_id int, a_reason varchar, a_date bigint,
                                                 _id OUT bigint)
   RETURNS bigint
   LANGUAGE plpgsql AS
 $fun$
 BEGIN
-  ASSERT (a_amount NOTNULL AND a_currency NOTNULL AND a_date NOTNULL);
+  ASSERT (a_amount NOTNULL AND a_currency_id NOTNULL AND a_date NOTNULL);
   IF a_date > extract(EPOCH FROM now()) + 1 THEN
     RAISE SQLSTATE 'R0001'; -- Invalid time
   ELSEIF ((SELECT pkey_id FROM tbl.currency WHERE pkey_id = a_currency_id) ISNULL) THEN
     RAISE SQLSTATE 'R0003'; -- Invalid currency code
   END IF;
   INSERT INTO tbl.spending(amount, fkey_currency, reason, date)
-  VALUES (a_amount, a_currency, a_reason, a_date)
+  VALUES (a_amount, a_currency_id, a_reason, a_date)
   RETURNING pkey_id INTO STRICT _id;
 END
 $fun$;
