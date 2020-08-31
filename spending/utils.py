@@ -33,7 +33,7 @@ class AppConfig(object):
         self.db = config.get('db')
 
 
-def pretty_date(ts):
+def pretty_date(ts: int) -> str:
     second_diff = time.time() - ts
     day_diff = int(second_diff / 86400)
     if day_diff < 0 or not ts:
@@ -63,7 +63,7 @@ def pretty_date(ts):
     return str(int(day_diff / 365)) + " years ago"
 
 
-def format_amount(amount: float):
+def format_amount(amount: float) -> str:
     if int(amount) == amount:
         return ("%.0f" % amount)
     elif int(amount * 10) == amount * 10:
