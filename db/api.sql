@@ -10,8 +10,10 @@ CREATE OR REPLACE FUNCTION api.fun_add_spending(a_amount bigint, a_currency int,
 $fun$
 BEGIN
   ASSERT (a_amount NOTNULL AND a_currency NOTNULL AND a_date NOTNULL);
-  IF a_date > extract(EPOCH FROM now()) THEN
+  IF a_date > extract(EPOCH FROM now()) + 1 THEN
     RAISE SQLSTATE 'R0001'; -- Invalid time
+  ELSEIF ((SELECT pkey_id FROM tbl.currency WHERE pkey_id = a_currency_id) ISNULL) THEN
+    RAISE SQLSTATE 'R0003'; -- Invalid currency code
   END IF;
   INSERT INTO tbl.spending(amount, fkey_currency, reason, date)
   VALUES (a_amount, a_currency, a_reason, a_date)
@@ -39,7 +41,9 @@ CREATE OR REPLACE FUNCTION api.fun_update_spending(a_spending_id bigint, a_amoun
 $fun$
 BEGIN
   ASSERT (a_spending_id NOTNULL);
-  IF ((SELECT pkey_id FROM tbl.spending WHERE pkey_id = a_spending_id) ISNULL) THEN
+  IF a_date > extract(EPOCH FROM now()) + 1 THEN
+    RAISE SQLSTATE 'R0001'; -- Invalid time
+  ELSEIF ((SELECT pkey_id FROM tbl.spending WHERE pkey_id = a_spending_id) ISNULL) THEN
     RAISE SQLSTATE 'R0002'; -- Spending doesn't exist
   ELSEIF ((SELECT pkey_id FROM tbl.currency WHERE pkey_id = a_currency_id) ISNULL) THEN
     RAISE SQLSTATE 'R0003'; -- Invalid currency code
