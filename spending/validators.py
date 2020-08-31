@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import BaseValidator
 import jsonschema
 
+
 class JSONSchemaValidator(BaseValidator):
     def validate(self, a):
         try:

@@ -11,11 +11,13 @@ import time
 error = Errors()
 validation_schema = ValidationSchema()
 
+
 def index(request) -> HttpResponse:
     spend_data = get_spending_list()
     print(type(spend_data))
     index_template = render_to_string('list.html', {'data': spend_data})
     return HttpResponse(index_template)
+
 
 def addspending(request) -> HttpResponse:
     '''
@@ -34,7 +36,7 @@ def addspending(request) -> HttpResponse:
             jsondata['currency'] = get_currency_id(jsondata['currency'])
             if not jsondata['currency']:
                 return HttpResponse(json.dumps({'error': error.DATA_ERROR, 'msg': 'Invalid currency code!'}))
-            jsondata['amount'] = int(jsondata['amount']*100)
+            jsondata['amount'] = int(jsondata['amount'] * 100)
             params = ['amount', 'currency', 'reason', 'date']
             data = [jsondata.get(param) for param in params]
             with connection.cursor() as cursor:
@@ -52,15 +54,18 @@ def addspending(request) -> HttpResponse:
     else:
         return HttpResponse(status=404)
 
+
 def get_spending_list():
     with connection.cursor() as cursor:
         cursor.callproc('api.fun_get_all_spendings')
         data = cursor.fetchall()
     data_dict = [
-        {'id': sp_id, 'amount': format_amount(float(amount) / 100), 'currency': currency, 'reason': reason if reason else '', 'date': pretty_date(date)} for
+        {'id': sp_id, 'amount': format_amount(float(amount) / 100), 'currency': currency,
+         'reason': reason if reason else '', 'date': pretty_date(date)} for
         sp_id, amount, currency, reason, date in data
     ]
-    return(data_dict)
+    return (data_dict)
+
 
 def getspending(request) -> HttpResponse:
     '''
@@ -100,7 +105,7 @@ def getspending(request) -> HttpResponse:
             ]
         else:
             data_dict = [
-                {'id': sp_id, 'amount': float(amount)/100, 'currency': currency, 'reason': reason, 'date': date} for
+                {'id': sp_id, 'amount': float(amount) / 100, 'currency': currency, 'reason': reason, 'date': date} for
                 sp_id, amount, currency, reason, date in data
             ]
         return HttpResponse(json.dumps({'ok': 1, 'data': data_dict}))
@@ -150,7 +155,7 @@ def updatespending(request) -> HttpResponse:
             jsondata['currency'] = get_currency_id(jsondata['currency'])
             if not jsondata['currency']:
                 return HttpResponse(json.dumps({'error': error.DATA_ERROR, 'msg': 'Invalid currency code!'}))
-            jsondata['amount'] = int(jsondata['amount']*100)
+            jsondata['amount'] = int(jsondata['amount'] * 100)
             params = ['id', 'amount', 'currency', 'reason', 'date']
             data = [jsondata.get(param) for param in params]
             with connection.cursor() as cursor:

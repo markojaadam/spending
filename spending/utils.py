@@ -25,15 +25,17 @@ class Errors(object):
         match = sqlstate_finder.findall(errmsg)
         return self.sqlstates.get(match[0], 'Unknown error.') if match else 'Unknown error.'
 
+
 class AppConfig(object):
     def __init__(self, config_file):
-        config =  json.loads(open(config_file).read())
+        config = json.loads(open(config_file).read())
         self.server = config.get('server')
         self.db = config.get('db')
 
+
 def pretty_date(ts):
     second_diff = time.time() - ts
-    day_diff = int(second_diff/86400)
+    day_diff = int(second_diff / 86400)
     if day_diff < 0 or not ts:
         return ''
 
@@ -60,10 +62,11 @@ def pretty_date(ts):
         return str(int(day_diff / 30)) + " months ago"
     return str(int(day_diff / 365)) + " years ago"
 
+
 def format_amount(amount: float):
     if int(amount) == amount:
-        return("%.0f" % amount)
-    elif int(amount * 10) == amount * 10 :
-        return( "%.1f" % amount)
+        return ("%.0f" % amount)
+    elif int(amount * 10) == amount * 10:
+        return ("%.1f" % amount)
     else:
-        return( "%.2f" % amount)
+        return ("%.2f" % amount)
