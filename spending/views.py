@@ -13,10 +13,13 @@ validation_schema = ValidationSchema()
 
 
 def index(request) -> HttpResponse:
-    spend_data = get_spending_list()
-    print(type(spend_data))
-    index_template = render_to_string('list.html', {'data': spend_data})
-    return HttpResponse(index_template)
+    if request.method == 'GET':
+        spend_data = get_spending_list()
+        print(type(spend_data))
+        index_template = render_to_string('list.html', {'data': spend_data})
+        return HttpResponse(index_template)
+    else:
+        return HttpResponse(status=404)
 
 
 def addspending(request) -> HttpResponse:
