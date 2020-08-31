@@ -15,15 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', views.index, name='index'),
+    path('', views.index, name='index'),
     path('addspending', views.addspending, name='addspending'),
     path('deletespending', views.deletespending, name='deletespending'),
     path('updatespending', views.updatespending, name='updatespending'),
     path('getspending', views.getspending, name='getspending'),
     path('getspending/(<str:order_by>)', views.getspending, name='getspending'),
     path('getspending/(<str:currency>)', views.getspending, name='getspending'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

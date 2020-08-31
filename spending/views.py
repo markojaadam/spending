@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.core.exceptions import ValidationError
 from django.db import connection
-from .utils import get_currency_id, Errors
+from django.template.loader import render_to_string
+from .utils import get_currency_id, Errors, pretty_date, format_amount
 from .json_schema import ADD_SPENDING_SCHEMA, DELETE_SPENDING_SCHEMA, UPDATE_SPENDING_SCHEMA
 from .validators import JSONSchemaValidator
 import json
@@ -11,6 +12,12 @@ add_validator = JSONSchemaValidator(ADD_SPENDING_SCHEMA)
 update_validator = JSONSchemaValidator(UPDATE_SPENDING_SCHEMA)
 delete_validator = JSONSchemaValidator(DELETE_SPENDING_SCHEMA)
 error = Errors()
+
+def index(request) -> HttpResponse:
+    spend_data = get_spending_list()
+    print(type(spend_data))
+    index_template = render_to_string('list.html', {'data': spend_data})
+    return HttpResponse(index_template)
 
 def addspending(request) -> HttpResponse:
     '''
@@ -49,6 +56,15 @@ def addspending(request) -> HttpResponse:
     else:
         return HttpResponse(status=404)
 
+def get_spending_list():
+    with connection.cursor() as cursor:
+        cursor.callproc('api.fun_get_all_spendings')
+        data = cursor.fetchall()
+    data_dict = [
+        {'id': sp_id, 'amount': format_amount(float(amount) / 100), 'currency': currency, 'reason': reason, 'date': pretty_date(date)} for
+        sp_id, amount, currency, reason, date in data
+    ]
+    return(data_dict)
 
 def getspending(request) -> HttpResponse:
     '''
