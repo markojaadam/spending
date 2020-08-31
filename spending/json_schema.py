@@ -23,7 +23,7 @@ class ValidationSchema(object):
             'date': {
                 'type': 'integer',
                 'minimum': 0,
-                'maximum': int(time.time())
+                'maximum': int(time.time()) + 1
             }
         },
         'required': [
@@ -61,7 +61,7 @@ class ValidationSchema(object):
             'date': {
                 'type': 'integer',
                 'minimum': 0,
-                'maximum': int(time.time())
+                'maximum': int(time.time()) + 1
             }
         },
         'required': [
