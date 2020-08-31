@@ -3,15 +3,13 @@ from django.core.exceptions import ValidationError
 from django.db import connection
 from django.template.loader import render_to_string
 from .utils import get_currency_id, Errors, pretty_date, format_amount
-from .json_schema import ADD_SPENDING_SCHEMA, DELETE_SPENDING_SCHEMA, UPDATE_SPENDING_SCHEMA
+from .json_schema import ValidationSchema
 from .validators import JSONSchemaValidator
 import json
 import time
 
-add_validator = JSONSchemaValidator(ADD_SPENDING_SCHEMA)
-update_validator = JSONSchemaValidator(UPDATE_SPENDING_SCHEMA)
-delete_validator = JSONSchemaValidator(DELETE_SPENDING_SCHEMA)
 error = Errors()
+validation_schema = ValidationSchema()
 
 def index(request) -> HttpResponse:
     spend_data = get_spending_list()
@@ -31,13 +29,11 @@ def addspending(request) -> HttpResponse:
     if request.method == 'POST':
         try:
             jsondata = json.loads(request.body)
+            add_validator = JSONSchemaValidator(validation_schema.ADD_SPENDING_SCHEMA)
             add_validator.validate(jsondata)
             jsondata['currency'] = get_currency_id(jsondata['currency'])
             if not jsondata['currency']:
                 return HttpResponse(json.dumps({'error': error.DATA_ERROR, 'msg': 'Invalid currency code!'}))
-            elif jsondata['date'] > int(time.time()):
-                return HttpResponse(json.dumps(
-                    {'error': error.DATA_ERROR, 'msg': 'Invalid timestamp!'}))  # You cannot spend in the future
             jsondata['amount'] = int(jsondata['amount']*100)
             params = ['amount', 'currency', 'reason', 'date']
             data = [jsondata.get(param) for param in params]
@@ -121,6 +117,7 @@ def deletespending(request) -> HttpResponse:
     if request.method == 'POST':
         try:
             jsondata = json.loads(request.body)
+            delete_validator = JSONSchemaValidator(validation_schema.DELETE_SPENDING_SCHEMA)
             delete_validator.validate(jsondata)
             with connection.cursor() as cursor:
                 try:
@@ -148,13 +145,11 @@ def updatespending(request) -> HttpResponse:
     if request.method == 'POST':
         try:
             jsondata = json.loads(request.body)
+            update_validator = JSONSchemaValidator(validation_schema.UPDATE_SPENDING_SCHEMA)
             update_validator.validate(jsondata)
             jsondata['currency'] = get_currency_id(jsondata['currency'])
             if not jsondata['currency']:
                 return HttpResponse(json.dumps({'error': error.DATA_ERROR, 'msg': 'Invalid currency code!'}))
-            elif jsondata['date'] > int(time.time()):
-                return HttpResponse(json.dumps(
-                    {'error': error.DATA_ERROR, 'msg': 'Invalid timestamp!'}))  # You cannot spend in the future
             jsondata['amount'] = int(jsondata['amount']*100)
             params = ['id', 'amount', 'currency', 'reason', 'date']
             data = [jsondata.get(param) for param in params]
